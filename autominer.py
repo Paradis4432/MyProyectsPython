@@ -42,25 +42,36 @@ def pressD():
 
 time.sleep(2)  # so u can switch to your game
 
-pressD()
-holdMouse()
-cont = 0
-laps = 0
 
-while True:
+def main():
+    pressD()
     holdMouse()
-    time.sleep(9)
-    pressQ()
-    time.sleep(9)
-    moveRight()
-    cont = cont + 1
-    print(cont, "cont plus")
-    if cont == 3:
-        cont = 0
-        if laps == 2:
-            laps = 0
-            moveDown()
-            continue
-        moveUp()
-        laps = laps + 1
-        print(laps, "laps plus")
+    cont = 0
+    laps = 0
+
+    while True:
+        holdMouse()
+        pressD()
+        time.sleep(9)
+        pressQ()
+        time.sleep(9)
+        moveRight()
+        cont = cont + 1
+        print(cont, "cont plus")
+        if cont == 3:
+            cont = 0
+            if laps == 2:
+                laps = 0
+                moveDown()
+                continue
+            moveUp()
+            laps = laps + 1
+            print(laps, "laps plus")
+
+main()
+
+def test():
+    moveUp()
+    moveUp()
+    time.sleep(1)
+    moveDown()
