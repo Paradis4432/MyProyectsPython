@@ -1,6 +1,8 @@
-import pydirectinput
-import pyautogui
 import time
+import winsound
+
+import pyautogui
+import pydirectinput
 
 
 def moveRight():
@@ -40,9 +42,6 @@ def pressD():
     pydirectinput.keyDown('d')
 
 
-time.sleep(2)  # so u can switch to your game
-
-
 def main():
     pressD()
     holdMouse()
@@ -68,10 +67,34 @@ def main():
             laps = laps + 1
             print(laps, "laps plus")
 
-main()
 
-def test():
-    moveUp()
-    moveUp()
-    time.sleep(1)
-    moveDown()
+def cooldown():
+    # ghast 6 minutes
+    # q 3 minutes
+    # shadow clones 15 mins
+    seconds = 0
+    mins = 0
+    hours = 0
+    while True:
+        seconds = seconds + 1
+        if seconds >= 60:
+            mins = mins + 1
+            seconds = 0
+        if mins % 15 == 0 and mins != 0:
+            for i in range(1, 5):
+                winsound.Beep(1000, 1000)
+                print("time to mine, time:")
+                print(f"H: {hours} M: {mins} S: {seconds}")
+        if mins >= 60:
+            print("1 hour")
+            print(f"H: {hours} M: {mins} S: {seconds}")
+            seconds = 0
+            mins = 0
+        if hours >= 24:
+            print("reseting")
+            print(f"H: {hours} M: {mins} S: {seconds}")
+
+        time.sleep(1)
+
+time.sleep(3)
+main()
